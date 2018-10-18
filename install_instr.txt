@@ -1,0 +1,27 @@
+# Naar https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-centos-7
+
+#Run all as root!
+# Add epel
+
+yum -y install epel-release
+yum -y install mosquitto
+
+# Allow inboud connections trough firewall
+firewall-cmd --permanent --add-port=1883/tcp
+firewall-cmd --reload
+
+#start om te testen
+systemctl start mosquitto
+
+#autostart
+systemctl enable mosquitto
+
+
+####Testen
+#CLI pub/sub
+mosquitto_sub -h localhost -t test
+mosquitto_pub -h localhost -t test -m "hello world"
+
+# Set passwords
+
+#work in progress :)
