@@ -22,6 +22,26 @@ systemctl enable mosquitto
 mosquitto_sub -h localhost -t test
 mosquitto_pub -h localhost -t test -m "hello world"
 
-# Set passwords
+# Set authentication
 
-#work in progress :)
+cd /etc/mosquitto
+
+#backup file
+cp mosquitto.conf mosquitto.conf.bak
+
+#Voeg onderaan deze regels toe
+
+password_file /etc/mosquitto/passwd
+allow_anonymous false
+acl_file /etc/mosquitto/club_iot.acl
+
+
+#Download de ACL configuratie en plaats het op dat pad
+#Doe hetzelfde voor de wachtwoorden
+
+#Herstart de service
+systemctl restart mosquitto
+
+#Voor debuggen kan het nuttig zijn in de voorgrond te runnen
+systemctl stop mosquitto
+mosquitto -c /etc/mosquitto/mosquitto.conf
