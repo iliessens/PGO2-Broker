@@ -6,39 +6,39 @@
  * @license MIT
  *
  */
-var mongodb  = require('mongodb');
-var mqtt     = require('mqtt');
-var config   = require('./config');
+var mongodb = require('mongodb');
+var mqtt = require('mqtt');
+var config = require('./config');
 
-//var mqttUri  = 'mqtt://' + config.mqtt.hostname + ':' + config.mqtt.port;
-var mqttUri  = 'mqtt://' + config.mqtt.user + ':' + config.mqtt.password + '@' + config.mqtt.hostname + ':' + config.mqtt.port;
-var client   = mqtt.connect(mqttUri);
+var mqttUri = 'mqtt://' + config.mqtt.user + ':' + config.mqtt.password + '@' + config.mqtt.hostname + ':' + config.mqtt.port;
+var client = mqtt.connect(mqttUri);
 
-client.on('connect', function () {
+client.on('connect', function() {
     client.subscribe(config.mqtt.namespace);
 });
 
 var mongoUri = 'mongodb://' + config.mongodb.hostname + ':' + config.mongodb.port + '/' + config.mongodb.database;
 mongodb.MongoClient.connect(mongoUri, function(error, database) {
-    if(error != null) {
+    if (error != null) {
         throw error;
     }
 
     var collection = database.collection(config.mongodb.collection);
 
-    client.on('message', function (topic, message) {
-	try {
-		console.log("Received msg:" + message);
-	        var messageObject = JSON.parse(message);
-	    collection.insert(messageObject, function(error, result) {
-            if(error != null) {
-                console.log("ERROR: " + error);
-            }
-       });
-
-        }
-        catch(error) {
-                console.error(error);
+    client.on('message', function(topic, message) {
+        try { // do not quit when JSON error
+            console.log("Received msg:" + message);
+			
+            var messageObject = JSON.parse(message);
+			
+            collection.insert(messageObject, function(error, result) {
+                if (error != null) {
+                    console.log("ERROR: " + error);
+                }
+            });
+        } catch (error) {
+			if(error.name != "SyntaxError") throw error;
+            console.error(error);
         }
 
     });
