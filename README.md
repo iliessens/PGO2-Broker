@@ -4,7 +4,7 @@ Broker information for PGO2
 Zie ook documenten in repository-root
 
 # Payload
-Payload is op zich niet belangrijk voor de broker, maar we definiëren hier toch het gebruikte formaat.
+Payload is op zich niet belangrijk voor de broker, maar we definiëren hier toch het gebruikte formaat. We gebruiken JSON met volgende velden.
 
 __Music__
 *	Titel: string
