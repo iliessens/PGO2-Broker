@@ -37,8 +37,9 @@ mongodb.MongoClient.connect(mongoUri, function(error, database) {
                 }
             });
         } catch (error) {
-			if(error.name != "SyntaxError") throw error;
-            console.error(error);
+			if (error.name = "MongoError") process.exit(); // let PM2 restart the service
+			else if(error.name != "SyntaxError")  throw error;
+            else console.error(error);
         }
 
     });
