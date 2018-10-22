@@ -53,3 +53,9 @@ __Votes__
 
 # Topic authentication
 Vraag user en paswoord aan Imre
+
+# MQTT to Mongo
+Is een Node JS script dat de MQTT berichten in de MongoDB plaatst.  
+Configuratie staat in config.js  
+Uitvoeren met ``node server.js``  
+Wordt als deamon uitgevoerd via PM2-framework.  
