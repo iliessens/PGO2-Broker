@@ -3,10 +3,26 @@ Broker information for PGO2
 
 Zie ook documenten in repository-root
 
-# Payload -
-Payload is op zich niet belangrijk voor de broker, maar we definiëren hier toch het gebruikte formaat. (zie word doc)
+# Payload
+Payload is op zich niet belangrijk voor de broker, maar we definiëren hier toch het gebruikte formaat.
 
-**Voorbeeld**
+__Music__
+*	Titel: string
+*	Artiest: string
+*	Jaar: integer
+*	Song id: integer
+
+__Votes__
+*	Timestamp: [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date & time 
+*	Value: integer  
+    *	Up = 1
+    *	Down = -1
+*	Username: string
+*	Id: String (UUID)
+*	Song id: integer
+
+
+## Voorbeeld
 /votes
 ```
 {"timestamp": "2018-10-18T14:28:53Z",
