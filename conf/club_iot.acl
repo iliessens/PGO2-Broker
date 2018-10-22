@@ -1,7 +1,7 @@
-# This affects access control for clients with no username.
+# SYS/ topics worden door niemand gelezen
 #topic read $SYS/#
 
-# This only affects clients with username "roger".
+# This only affects clients with username "vote_db".
 user vote_db
 topic readwrite votes/#
 
