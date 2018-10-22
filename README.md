@@ -3,7 +3,7 @@ Broker information for PGO2
 
 Zie ook documenten in repository-root
 
-#Payload
+# Payload -
 Payload is op zich niet belangrijk voor de broker, maar we definiëren hier toch het gebruikte formaat. (zie word doc)
 
 **Voorbeeld**
@@ -27,5 +27,5 @@ Payload is op zich niet belangrijk voor de broker, maar we definiëren hier toch
 
 ```
 
-#Topic authentication
+# Topic authentication
 Vraag user en paswoord aan Imre
