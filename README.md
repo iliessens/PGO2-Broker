@@ -7,6 +7,9 @@ __topics__:
 * /votes (Qos1)
 * /music (QoS2)
 
+⚠ Indien je op een verkeerd topic pub/sub doet of met verkeerde credentials zal je vaak **geen foutmelding** krijgen. De berichten worden echter NIET verstuurd/ontvangen.  
+Gebruik de mosquitto_sub en mosquitto_sub tools om te testen (beschikbaar op server A)
+
 # Payload
 Payload is op zich niet belangrijk voor de broker, maar we definiëren hier toch het gebruikte formaat. We gebruiken JSON met volgende velden.
 
