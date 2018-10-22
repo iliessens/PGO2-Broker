@@ -37,7 +37,10 @@ acl_file /etc/mosquitto/club_iot.acl
 
 
 #Download de ACL configuratie en plaats het op dat pad
-#Doe hetzelfde voor de wachtwoorden
+
+#Maak het wachtwoordenbestand "passwd" aan volgens het formaat user:paswoord
+#Encrypteer het met
+mosquitto_passwd -U passwd
 
 #Herstart de service
 systemctl restart mosquitto
@@ -45,3 +48,7 @@ systemctl restart mosquitto
 #Voor debuggen kan het nuttig zijn in de voorgrond te runnen
 systemctl stop mosquitto
 mosquitto -c /etc/mosquitto/mosquitto.conf
+
+#Testen met authenticatie (de tools worden met mosquitto geïnstalleerd)
+mosquitto_sub -h prod.mqtt -t votes -u vote_db -P <wachtwoord>
+mosquitto_pub -h prod.mqtt -t votes -u club_app -P <wachtwoord> -m "Testbericht"
