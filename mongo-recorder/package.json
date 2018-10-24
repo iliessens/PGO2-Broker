@@ -5,7 +5,7 @@
     "license": "MIT",
     "version": "1.0.0",
     "dependencies": {
-        "mqtt": "2.13.0",
+        "mqtt": ">=2.15.0",
         "mongodb": "2.2.31"
     },
     "repository" : {
