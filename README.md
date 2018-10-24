@@ -14,19 +14,19 @@ Gebruik de mosquitto_sub en mosquitto_sub tools om te testen (beschikbaar op ser
 Payload is op zich niet belangrijk voor de broker, maar we definiëren hier toch het gebruikte formaat. We gebruiken JSON met volgende velden.
 
 __Music__
-*	Titel: string
-*	Artiest: string
-*	Jaar: integer
-*	Song id: integer
+*	title: string
+*	artist: string
+*	year: integer
+*	songid: integer
 
 __Votes__
-*	Timestamp: [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date & time 
-*	Value: integer  
+*	timestamp: [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date & time (String)
+*	value: integer  
     *	Up = 1
     *	Down = -1
-*	Username: string
-*	Id: String (UUID)
-*	Song id: integer
+*	username: string
+*	id: String (UUID)
+*	songid: integer
 
 
 ## Voorbeeld
